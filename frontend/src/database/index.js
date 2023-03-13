@@ -25,6 +25,9 @@ export async function fetchConversation() {
         const endpoint = `/conversations`
         const response = await client.get(endpoint)
         console.log(response)
+        if (response.data === "No conversations in database") {
+            return
+        }
         const conversation = response.data.reduce((acc, curr) => {
             acc.user_msg.push(curr.user_msg)
             acc.bot_msg.push(curr.bot_msg)

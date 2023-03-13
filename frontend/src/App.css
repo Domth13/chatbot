@@ -2,7 +2,7 @@
 .App {
   display: flex;
   height: 100vh;
-  background-color: #23395d;
+  background: rgb(36, 72, 100);
   justify-content: center;
   color: #fff
 }
@@ -86,7 +86,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #455877;
+  background-color: rgba(62, 103, 165 );
   color: white;
   border-radius: 10px;
   transition: background-color 0.3s ease;
@@ -113,7 +113,9 @@
   display: flex;
   flex:1;
   align-self: center;
-  overflow: hidden;
+  overflow: auto;
+  scroll-snap-type: y mandatory;
+  scroll-snap-align: end;
 }
 
 .Home-response-wrapper {
@@ -128,7 +130,10 @@
   margin: 20px 15px 30px 15px;
   background: rgba(0, 0, 0, 0.6);
   
+  scroll-snap-align: start;
 }
+
+
 
 .Home-response-text {
   display: flex;
@@ -136,11 +141,12 @@
   margin: 10px;
   margin-left: 14px;
   margin-right: 14px;
-  color:white
+  color:white;
+  scroll-snap-align: start
 }
 
 .Conversation-user {
-  background:  rgb(69, 88, 119, 0.8);
+  background:  rgba(62, 103, 165, 0.8 );
   margin: 20px 5px 20px 5px;
   padding: 5px 10px 5px 10px;
   border-radius: 20px;
@@ -195,18 +201,20 @@
 
 .loader {
   display: flex;
+  
   justify-content: center;
   align-items: center;
   height: 100%;
 }
 
 .spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
+  border: 4px solid rgba(255, 255, 255, 0.1);
   border-top: 4px solid #000000;
   border-radius: 50%;
   width: 32px;
   height: 32px;
   animation: spin 1s linear infinite;
+  align-self: center;
 }
 
 @keyframes spin {

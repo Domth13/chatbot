@@ -20,9 +20,14 @@ export default function Home() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        
+        setIsLoading(true)
         await fetchResponse(userInput)
         const response = await fetchConversation()
-        setConversation(response)
+        setIsLoading(false)
+        if (response.user_msg || response.bot_msg) {
+            setConversation(response)
+        }
         setUserInput("")
     }
 
@@ -51,7 +56,7 @@ export default function Home() {
             <div className='Home-container'>
                 <div className='Home-text-container'>
                     <div className='Home-text-wrapper'>
-                        <div className='Home-text-title'> RoliBot</div>
+                        <div className='Home-text-title'> BiWiBot</div>
                     </div>
                 </div>
                 <div className='Home-response-container'>
@@ -60,7 +65,12 @@ export default function Home() {
                             <Loader />
                         ) : (
                             <div className='Home-response-text'>
-                                <Conversation conversation={conversation}/>
+                                {conversation.bot_msg ? (
+                                    <Conversation conversation={conversation}/>
+                                ): (
+                                    <div className='Conversation-bot'>Hey, I am BiWiBot. How can I help you?</div>
+                                )}
+                                
                             </div>
                         )}
                     </div>
